@@ -1,5 +1,6 @@
 import 'package:e_commerce/utils/router_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../features/splash_screen/splash_screen.dart';
 
@@ -8,11 +9,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: RoutesManager.router,
+    return ScreenUtilInit(
+      designSize: Size(720,900),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_,context){
+        return  MaterialApp.router(
+          routerConfig: RoutesManager.router,
 
-      debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
 
+        );
+
+      },
     );
+
+
+
   }
 }
