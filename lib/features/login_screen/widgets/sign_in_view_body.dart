@@ -17,7 +17,10 @@ class SignInViewBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              Image.asset(AssetsManager.route,width: double.infinity,height: 71.1.w,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(AssetsManager.route,width: double.infinity,height: 71.1.w,),
+              ),
               SizedBox(height: 30.h,),
              const  Text("Welcome Back To Route",style: TextStyles.textStyle24,),
                     SizedBox(height: 5.h,),

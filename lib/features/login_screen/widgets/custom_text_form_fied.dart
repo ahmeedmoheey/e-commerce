@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomTextFormField extends StatelessWidget {
-   CustomTextFormField({super.key,required this.title, this.suffixIcon,this.showPassword=false,required this.hint,this.isEmail=false,});
+   CustomTextFormField({super.key,required this.title, this.suffixIcon,this.showPassword=false,required this.hint,this.isEmail=false,this.controller});
 String title ;
 String hint;
 final Widget? suffixIcon ;
  final bool showPassword;
  final bool isEmail;
+ final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller:controller ,
       obscureText:showPassword ,
       validator: (value) {
         if (value == null || value.isEmpty) {
