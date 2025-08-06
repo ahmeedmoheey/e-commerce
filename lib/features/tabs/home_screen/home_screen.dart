@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: BottomNavigationBar(
+          currentIndex: _selectIndex,
           onTap: (index) {
             setState(() {
               _selectIndex= index;
@@ -39,18 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
           },
 
           items: [
-              BottomNavigationBarItem(
-                label: "",
-                icon:SvgPic(pic: IconsManager.icon1),  ),
-              BottomNavigationBarItem(
-                label: "",
-                icon:SvgPic(pic: IconsManager.icon2),  ),
-              BottomNavigationBarItem(
-                label: "",
-                icon:  SvgPic( pic: IconsManager.icon3),  ),
-              BottomNavigationBarItem(
-                label: "",
-                icon: SvgPic(pic: IconsManager.icon4) ),
+              CustomBottomNavBarItem(IconsManager.icon1, ""),
+              CustomBottomNavBarItem(IconsManager.icon2, ""),
+              CustomBottomNavBarItem(IconsManager.icon3, ""),
+              CustomBottomNavBarItem(IconsManager.icon4, ""),
           ],
         ),
       ),
@@ -63,12 +56,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 class SvgPic extends StatelessWidget {
-   SvgPic({super.key,required this.pic});
-  String pic;
+   SvgPic({super.key,required this.pic, this.color});
+   final String pic;
+ final  Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return  SvgPicture.asset(pic);
+    return  SvgPicture.asset(
+      pic,
+      color:color ,
+    );
   }
 }
 
+class CustomBottomNavBarItem extends BottomNavigationBarItem {
+  String iconPath;
+  String title;
+  CustomBottomNavBarItem(this.iconPath, this.title)
+      : super(
+    label: title,
+    icon:  SvgPic(pic: iconPath,color: Colors.white) ,
+    activeIcon: CircleAvatar(
+  backgroundColor: Colors.white,
+      child: SvgPic(
+        color: Color(0xFF004182),
+        pic: iconPath,),
+    ),
+  );
+}
