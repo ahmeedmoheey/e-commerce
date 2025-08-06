@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/features/login_screen/widgets/custom_text_form_fied.dart';
 import 'package:e_commerce/utils/router_manager.dart';
 import 'package:e_commerce/utils/text_styles.dart';
@@ -17,50 +16,49 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   final _formKey = GlobalKey<FormState>();
-  bool visibalePassword= true;
+  bool visibalePassword = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-           Text('User Name', style: TextStyles.textStyle18),
-           SizedBox(height: 24.h),
+          Text('User Name', style: TextStyles.textStyle18),
+          SizedBox(height: 24.h),
           CustomTextFormField(
             controller: emailController,
             isEmail: true,
-              hint: "please enter your  user-name",
-              title: "enter your name") ,
+            hint: "please enter your user-name",
+            title: "enter your name",
+          ),
           SizedBox(height: 32.h),
-           Text("Password", style: TextStyles.textStyle18),
-           SizedBox(height: 24.h),
+          Text("Password", style: TextStyles.textStyle18),
+          SizedBox(height: 24.h),
           CustomTextFormField(
             controller: passwordController,
             hint: "please enter your Password",
-              title: "enter your password",
-              showPassword: visibalePassword,
-              suffixIcon:
-          IconButton(
-            icon: Icon(
-              visibalePassword?FontAwesomeIcons.eyeSlash:
-                  FontAwesomeIcons.eye,
-              color: Colors.grey,
-
+            title: "enter your password",
+            showPassword: visibalePassword,
+            suffixIcon: IconButton(
+              icon: Icon(
+                visibalePassword
+                    ? FontAwesomeIcons.eyeSlash
+                    : FontAwesomeIcons.eye,
+                color: Colors.grey,
+              ),
+              onPressed: _showPasswordVisibality,
             ),
-            onPressed: _showPasswordVisibality,
-          )),
-           SizedBox(height: 4.h),
+          ),
+          SizedBox(height: 4.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
-                onPressed: () {
-                },
+                onPressed: () {},
                 child: Text(
                   'Forgot password',
                   style: TextStyles.textStyle18.copyWith(
@@ -71,7 +69,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
             ],
           ),
-           SizedBox(height: 40.h),
+          SizedBox(height: 40.h),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
@@ -83,9 +81,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             onPressed: () {
               login();
             },
-            child:  Text("Login", style: TextStyles.textStyle20),
+            child: Text("Login", style: TextStyles.textStyle20),
           ),
-           SizedBox(height: 32.h),
+          SizedBox(height: 32.h),
           Center(
             child: InkWell(
               onTap: () {
@@ -102,56 +100,56 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ],
       ),
     );
-
   }
 
-  void _showSnackBarMessage(String message){
-    showDialog(context: context, builder: (context){
-      return AlertDialog(
-
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15)
-        ),
-
-
-        content:Column(
-          mainAxisSize: MainAxisSize.min,
-                    children: [
-            Text(message,textAlign: TextAlign.center,style:   const TextStyle(
-              fontWeight: FontWeight.bold
-            ),),
-               const SizedBox(height: 10,),
-            const CircularProgressIndicator()
-          ],
-        ),
-      );
-    });
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              CircularProgressIndicator(),
+              SizedBox(height: 10),
+              Text(
+                "Please wait...",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
+
 
   void login() async {
     if (_formKey.currentState!.validate()) {
+      _showLoadingDialog();
+
       try {
-        UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        UserCredential user = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
 
-        _showSnackBarMessage("Login Successful");
+        Navigator.of(context).pop();
 
-        Future.delayed(const Duration(seconds: 2), () {
-          Navigator.of(context).pop();
-          GoRouter.of(context).push(RoutesManager.khome);
-        });
+        GoRouter.of(context).push(RoutesManager.khome);
 
       } on FirebaseAuthException catch (e) {
-        print("Firebase error code: ${e.code}"); // <<< أضف ده هنا
+        Navigator.of(context).pop();
 
         String errorMessage;
 
         switch (e.code) {
-          case "user-not-found":
-            errorMessage = "No account found with this email.";
-            break;
           case "wrong-password":
             errorMessage = "Incorrect password. Please try again.";
             break;
@@ -162,41 +160,45 @@ class _CustomTextFieldState extends State<CustomTextField> {
             errorMessage = "This user account has been disabled.";
             break;
           case "invalid-credential":
-            errorMessage = "Email or password is incorrect. Please try again.";
+            errorMessage =
+            "Email or password is incorrect. Please try again.";
             break;
-
           default:
             errorMessage = "An unexpected error occurred. Please try again.";
         }
 
         _showErrorDialog(errorMessage);
+      } catch (e) {
+        Navigator.of(context).pop();
+        _showErrorDialog("Something went wrong. Please try again.");
       }
     }
   }
 
-
-  void _showErrorDialog(String message){
-    showDialog(context: context, builder: (context){
-      return AlertDialog(
-        title: const Text('Login Error'),
-        content: Text(message),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: Text("Ok"))
-        ],
-      );
-    },);
-
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Login Error'),
+          content: Text(message),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Ok"),
+            )
+          ],
+        );
+      },
+    );
   }
 
-  void _showPasswordVisibality(){
+  void _showPasswordVisibality() {
     setState(() {
- visibalePassword=!visibalePassword;
+      visibalePassword = !visibalePassword;
     });
   }
 }
-
-
-

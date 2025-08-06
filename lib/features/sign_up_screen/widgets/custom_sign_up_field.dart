@@ -156,9 +156,9 @@ class _CustomSignUpFieldState extends State<CustomSignUpField> {
         UserCredential user = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: emailController.text.trim(),
             password: passwordController.text.trim());
-        _showSnackBarMessage("Register Success");
 
-        Future.delayed(const Duration(seconds: 3), () {
+        _showSnackBarMessage("Register Success");
+        Future.delayed(const Duration(seconds: 4), () {
           // Navigator.of(context).pop();
           GoRouter.of(context).push(RoutesManager.Klogin);
         });
@@ -174,6 +174,7 @@ class _CustomSignUpFieldState extends State<CustomSignUpField> {
       }
     }
   }
+
 
 
 }

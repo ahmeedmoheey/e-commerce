@@ -1,3 +1,4 @@
+import 'package:e_commerce/app_theme/app_theme.dart';
 import 'package:e_commerce/utils/router_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_,context){
         return  MaterialApp.router(
+          theme: AppTheme.theme,
           routerConfig: RoutesManager.router,
-
           debugShowCheckedModeBanner: false,
 
         );

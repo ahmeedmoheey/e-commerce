@@ -20,10 +20,15 @@ class TextStyles{
   color: Colors.white,
 
 );
- static    TextStyle textStyle20 = TextStyle(
+ static const     TextStyle textStyle20 = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w600,
   color: Color(0xFF004182),
 
+);
+ static  const    TextStyle textStyle14 = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w300,
+     color: Colors.black
 );
 }
