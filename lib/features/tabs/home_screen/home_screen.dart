@@ -72,8 +72,7 @@ class SvgPic extends StatelessWidget {
 class CustomBottomNavBarItem extends BottomNavigationBarItem {
   String iconPath;
   String title;
-  CustomBottomNavBarItem(this.iconPath, this.title)
-      : super(
+  CustomBottomNavBarItem(this.iconPath, this.title) : super(
     label: title,
     icon:  SvgPic(pic: iconPath,color: Colors.white) ,
     activeIcon: CircleAvatar(
