@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'color_managrt.dart';
+
 class TextStyles{
   static const    TextStyle textStyle24 = TextStyle(
   color: Colors.white,
@@ -31,4 +33,15 @@ class TextStyles{
   fontWeight: FontWeight.w300,
      color: Colors.black
 );
+ static  const    TextStyle categories = TextStyle(
+     fontSize: 18,
+     fontWeight: FontWeight.w500,
+     color: ColorManager.darkBlue
+ );
+ static  const    TextStyle viewAll = TextStyle(
+     fontSize: 12,
+     fontWeight: FontWeight.w400,
+     color: ColorManager.darkBlue
+ );
+
 }

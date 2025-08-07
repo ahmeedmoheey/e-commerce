@@ -1,12 +1,14 @@
-import 'package:e_commerce/features/sign_up_screen/widgets/text_field_sign_uo.dart';
-import 'package:e_commerce/utils/router_manager.dart';
-import 'package:e_commerce/utils/text_styles.dart';
+import 'package:e_commerce/features/Auth/sign_up_screen/widgets/text_field_sign_uo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../core/utils/router_manager.dart';
+import '../../../../core/utils/text_styles.dart';
+
 
 class CustomSignUpField extends StatefulWidget {
   CustomSignUpField({super.key});

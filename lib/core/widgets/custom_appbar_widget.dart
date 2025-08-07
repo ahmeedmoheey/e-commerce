@@ -1,13 +1,11 @@
-import 'package:e_commerce/utils/color_managrt.dart';
-import 'package:e_commerce/utils/icons_manager.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../utils/assets_manager.dart';
-import '../../../../utils/text_styles.dart';
-import '../../../main_layout.dart';
+import '../../features/main_layout.dart';
+import '../utils/assets_manager.dart';
+import '../utils/color_managrt.dart';
+import '../utils/icons_manager.dart';
 
 class CustomAppBarWidgets extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBarWidgets({super.key, this.automaticallyImplyLeading});

@@ -1,11 +1,14 @@
-import 'package:e_commerce/features/login_screen/widgets/custom_text_form_fied.dart';
-import 'package:e_commerce/utils/router_manager.dart';
-import 'package:e_commerce/utils/text_styles.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../core/utils/router_manager.dart';
+import '../../../../core/utils/text_styles.dart';
+import 'custom_text_form_fied.dart';
+
 
 class CustomTextField extends StatefulWidget {
   CustomTextField({super.key});

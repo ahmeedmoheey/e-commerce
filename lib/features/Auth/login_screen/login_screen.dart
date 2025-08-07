@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/login_screen/widgets/sign_in_view_body.dart';
+import 'package:e_commerce/features/Auth/login_screen/widgets/sign_in_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {

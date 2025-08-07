@@ -1,8 +1,9 @@
 import 'package:e_commerce/features/splash_screen/widgets/sliding_text/sliding_text.dart';
-import 'package:e_commerce/utils/assets_manager.dart';
-import 'package:e_commerce/utils/router_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../core/utils/assets_manager.dart';
+import '../../core/utils/router_manager.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,10 +1,8 @@
 import 'package:e_commerce/app_theme/app_theme.dart';
 import 'package:e_commerce/features/main_layout.dart';
-import 'package:e_commerce/utils/router_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../features/splash_screen/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
