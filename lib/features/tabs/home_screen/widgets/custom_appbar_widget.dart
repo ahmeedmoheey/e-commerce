@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/color_managrt.dart';
 import 'package:e_commerce/utils/icons_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,75 +7,95 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../utils/assets_manager.dart';
 import '../../../../utils/text_styles.dart';
-import '../home_screen.dart';
+import '../../../main_layout.dart';
 
-class CustomAppBarWidgets extends StatelessWidget {
-  const CustomAppBarWidgets({super.key});
+class CustomAppBarWidgets extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBarWidgets({super.key, this.automaticallyImplyLeading});
+  final bool? automaticallyImplyLeading ;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(AssetsManager.route2, width: 66, height: 22),
-            ),
-            SizedBox(height: 18.h),
-            Row(
-                children:[
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: Color(0xFF004182), width: 1),
-                      ),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 24),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon:   SvgPic(pic: IconsManager.search),
-                            ),
-                          ),
-                          SizedBox(width: 7.w),
-                          Expanded(
-                            flex: 3,
-                            child: TextField(
-                              decoration: const  InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "what do you search for?",
-                                hintStyle: TextStyles.textStyle14,
-                              ),
-                              style: TextStyle(
-                                fontSize: 25.sp,
-                                color: Colors.blue.shade900,
-                              ),
-                            ),
-                          ),
-
-
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 2.w,),
-                  Expanded(
-                      flex: -1,
-                      child: IconButton(onPressed: (){}, icon:  SvgPic(pic: IconsManager.shoppingCart,)))
-                ] ),
-
-          ],
-        ),
+    return AppBar(
+      backgroundColor: ColorManager.white,
+      automaticallyImplyLeading:automaticallyImplyLeading??false ,
+      elevation: 0,
+      title: SvgPic(
+          colorFilter: ColorFilter.mode(ColorManager.darkBlue, BlendMode.srcIn),
+        pic: IconsManager.routee,
       ),
+      bottom: PreferredSize(
+        preferredSize: Size(100.h,60.w),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Expanded(child: TextFormField(
+               cursorColor: ColorManager.primary,
+                style: TextStyle(
+                  fontSize: 22.sp,
+                  color: ColorManager.primary,
+                ),
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 12.w,
+                  vertical: 8.h),
+                  focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10000),
+                      borderSide: BorderSide(
+                        color: ColorManager.primary,
+                        width: 1,
+                      )
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10000),
+                      borderSide: BorderSide(
+                        color: ColorManager.primary,
+                        width: 1,
+                      )
+                  ),
+                  disabledBorder:   OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10000),
+                      borderSide: BorderSide(
+                        color: ColorManager.primary,
+                        width: 1,
+                      )
+                  ) ,
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10000),
+                      borderSide: BorderSide(
+                        color: ColorManager.primary,
+                        width: 1,
+                      )
+                  ),
+                  errorBorder:  OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10000),
+                      borderSide: BorderSide(
+                        color: ColorManager.error,
+                        width: 1,
+                      ),
+                  ),
+                  prefixIcon: Image.asset(AssetsManager.iconSearch,),
+                  hintText:"what do you search for?",
+                  hintStyle: TextStyle(
+                    color: ColorManager.primary,
+                    fontSize: 16
+                  )
+
+                ),
+
+
+              )),
+              IconButton(onPressed: (){}, icon: SvgPic(
+                pic: IconsManager.shoppingCart,
+              ))
+            ],
+          ),
+        ) ,
+      ),
+
+
     );
   }
+
+  @override
+  Size get preferredSize => Size(0, 130.h);
 }

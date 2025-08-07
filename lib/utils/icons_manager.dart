@@ -5,4 +5,5 @@ class IconsManager{
   static const String icon4 = "assets/icons/perss.svg";
   static const String shoppingCart = "assets/icons/shopping_cart.svg";
   static const String search = "assets/icons/search.svg";
+  static const String routee = "assets/icons/routee.svg";
 }

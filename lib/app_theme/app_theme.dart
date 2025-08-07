@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/tabs/home_screen/home_screen.dart';
+import 'package:e_commerce/features/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

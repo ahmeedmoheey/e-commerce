@@ -4,7 +4,7 @@ import 'package:e_commerce/features/splash_screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/login_screen/login_screen.dart';
-import '../features/tabs/home_screen/home_screen.dart';
+import '../features/main_layout.dart';
 class RoutesManager{
   static  final  Klogin = "/loginScreen";
   static const kSignUp = "/SignUpScreen";
@@ -19,7 +19,7 @@ GoRoute(path: Klogin ,
 GoRoute(path: kSignUp ,
          builder: (context , state ) =>  const SignUp()),
 GoRoute(path: khome ,
-         builder: (context , state ) =>  const HomeScreen()),
+         builder: (context , state ) =>  const MainLayout()),
 
 
   ]);

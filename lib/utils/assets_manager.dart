@@ -7,4 +7,5 @@ class AssetsManager{
    static  const String images4 = "assets/images/Ellipse 14.png";
    static  const String images5 = "assets/images/Ellipse 16.png";
    static  const String images6 = "assets/images/Ellipse 17.png";
+   static  const String iconSearch = "assets/images/iconn_searchh.png";
 }
