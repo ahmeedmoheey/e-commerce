@@ -43,5 +43,10 @@ class TextStyles{
      fontWeight: FontWeight.w400,
      color: ColorManager.darkBlue
  );
+ static  const    TextStyle personalTexts = TextStyle(
+     color: ColorManager.darkBlue,
+     fontWeight: FontWeight.w500,
+     fontSize: 18
+ );
 
 }

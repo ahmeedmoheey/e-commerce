@@ -29,7 +29,7 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: false,
-      appBar: CustomAppBarWidgets(),
+      appBar:  _selectIndex ==3? null : CustomAppBarWidgets(),
 
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(15),

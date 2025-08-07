@@ -11,4 +11,5 @@ class AssetsManager{
    static  const String carouselSlider1 = "assets/images/CarouselSlider1.png";
    static  const String carouselSlider2 = "assets/images/CarouselSlider2.png";
    static  const String carouselSlider3 = "assets/images/CarouselSlider3.png";
+   static  const String shoesss = "assets/images/Frame 65.png";
 }
