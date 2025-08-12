@@ -3,6 +3,8 @@ import 'package:e_commerce/features/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/utils/router_manager.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,10 +16,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_,context){
-        return  MaterialApp(
-          home: MainLayout(),
+        return  MaterialApp.router(
           theme: AppTheme.theme,
-          // routerConfig: RoutesManager.router,
+          routerConfig: RoutesManager.router,
           debugShowCheckedModeBanner: false,
 
         );

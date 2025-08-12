@@ -48,5 +48,11 @@ class TextStyles{
      fontWeight: FontWeight.w500,
      fontSize: 18
  );
+ static      TextStyle text11 = TextStyle(
+     decoration: TextDecoration.lineThrough,
+     fontSize: 11,
+     fontWeight: FontWeight.w400,
+     color: ColorManager.darkBlue.withOpacity(.6),
+ );
 
 }

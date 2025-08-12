@@ -7,4 +7,5 @@ class IconsManager{
   static const String search = "assets/icons/search.svg";
   static const String routee = "assets/icons/routee.svg";
   static const String editIcon = "assets/icons/editt.svg";
+  static const String favvvv = "assets/icons/Group 17.svg";
 }

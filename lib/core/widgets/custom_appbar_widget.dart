@@ -1,6 +1,8 @@
 
+import 'package:e_commerce/core/utils/router_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../features/main_layout.dart';
 import '../utils/assets_manager.dart';
@@ -82,7 +84,11 @@ class CustomAppBarWidgets extends StatelessWidget implements PreferredSizeWidget
 
 
               )),
-              IconButton(onPressed: (){}, icon: SvgPic(
+              IconButton(onPressed: (){
+                GoRouter.of(context).push(RoutesManager.kCard);
+
+
+              }, icon: SvgPic(
                 pic: IconsManager.shoppingCart,
               ))
             ],
